@@ -8,18 +8,19 @@
 const FAMILY_FEUD = {
   rounds: [
     {
-      question: "‘여름’ 하면 떠오르는 것은?",
+      question: "2026 산리오 캐릭터 종합 인기순위 TOP10은?",
+      // 출처: 2026 산리오 캐릭터 대상 최종 결과(2026.06.28 발표). 번호 = 순위.
       answers: [
-        { text: "바다/해수욕장", points: 25 },
-        { text: "수박", points: 18 },
-        { text: "에어컨/선풍기", points: 14 },
-        { text: "휴가/여행", points: 11 },
-        { text: "아이스크림/빙수", points: 9 },
-        { text: "모기", points: 7 },
-        { text: "장마/비", points: 5 },
-        { text: "더위/땀", points: 4 },
-        { text: "물놀이/계곡", points: 3 },
-        { text: "매미", points: 2 },
+        { text: "폼폼푸린", points: 22 },
+        { text: "시나모롤", points: 17 },
+        { text: "포차코", points: 14 },
+        { text: "쿠로미", points: 11 },
+        { text: "헬로키티", points: 9 },
+        { text: "아히루노페클", points: 7 },
+        { text: "마이멜로디", points: 6 },
+        { text: "턱시도샘", points: 5 },
+        { text: "한교동", points: 4 },
+        { text: "리틀트윈스타", points: 3 },
       ],
     },
     {
