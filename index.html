@@ -60,14 +60,13 @@
         <span class="timer" id="qTimer">60</span>
       </div>
       <div class="qcard">
-        <div class="qnum" id="qNum">문제 1</div>
-        <div class="qtext" id="qText">문제 내용</div>
-        <div class="answer hidden" id="qAnswer">정답</div>
+        <div class="qnum" id="qNum">단어 1</div>
+        <div class="qtext word" id="qText">단어</div>
+        <div class="describe-hint">이 단어를 보고 설명하세요! (단어를 직접 말하면 안 돼요)</div>
       </div>
       <div class="play-controls">
-        <button class="btn ghost big" id="qRevealBtn">정답 보기</button>
         <button class="btn red big" id="qPassBtn">패스 ✕</button>
-        <button class="btn green big" id="qCorrectBtn">정답! ✓ (+1)</button>
+        <button class="btn green big" id="qCorrectBtn">정답! ✓</button>
       </div>
     </section>
 
@@ -78,7 +77,8 @@
       <div class="result-card">
         <div class="qnum" id="rCat">카테고리</div>
         <p style="color:var(--muted);margin:10px 0">최종 점수</p>
-        <div class="big-score"><span id="rScore">0</span> <span style="font-size:30px;color:var(--muted)">/ 15</span></div>
+        <div class="big-score"><span id="rScore">0</span> <span style="font-size:30px;color:var(--muted)">/ <span id="rMax">150</span></span></div>
+        <p id="rDetail" style="margin:10px 0 0;color:var(--muted)"></p>
         <p id="rComment" style="margin:14px 0 30px;font-size:20px"></p>
         <div class="play-controls">
           <button class="btn gold big" id="rAgainBtn">다시 도전</button>
