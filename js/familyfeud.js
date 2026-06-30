@@ -5,10 +5,13 @@
  *  - "+ 라운드 점수" 버튼으로 pot을 팀 점수로 전달
  * ========================================================================= */
 const FamilyFeud = (function () {
+  const LAST_BONUS = 50; // 리스트의 마지막 답을 맞춘 팀에게 주는 보너스 점수
+
   let roundIndex = 0;
   let pot = 0;
   let strikes = 0;
   let opened = []; // 각 답변 공개 여부
+  let bonusGiven = false; // 이번 라운드에서 마지막정답 보너스를 이미 줬는지
   const teams = { a: 0, b: 0 };
 
   function open() {
@@ -26,16 +29,19 @@ const FamilyFeud = (function () {
     roundIndex = i;
     pot = 0;
     strikes = 0;
+    bonusGiven = false;
     const round = rounds[i];
     opened = round.answers.map(() => false);
 
     document.getElementById("feudQuestion").textContent = round.question;
     document.getElementById("feudRoundInfo").textContent =
-      "라운드 " + (i + 1) + " / " + rounds.length;
+      "라운드 " + (i + 1) + " / " + rounds.length +
+      "  ·  ⭐ 마지막 정답을 맞춘 팀 +" + LAST_BONUS + "점";
 
     renderBoard();
     updatePot();
     renderStrikes();
+    updateBonusButtons();
 
     document.getElementById("feudPrevBtn").disabled = i === 0;
     document.getElementById("feudNextBtn").disabled = i === rounds.length - 1;
@@ -69,6 +75,7 @@ const FamilyFeud = (function () {
     }
     renderBoard();
     updatePot();
+    updateBonusButtons();
   }
 
   function revealAll() {
@@ -81,6 +88,26 @@ const FamilyFeud = (function () {
     });
     renderBoard();
     updatePot();
+    updateBonusButtons();
+  }
+
+  // ---- 마지막 정답 보너스 ----
+  // 리스트의 마지막(가장 어려운) 답이 공개되면 +50 버튼이 활성화됩니다.
+  function lastAnswerOpen() {
+    return opened.length > 0 && opened[opened.length - 1];
+  }
+  function updateBonusButtons() {
+    const enabled = lastAnswerOpen() && !bonusGiven;
+    document.querySelectorAll('[data-add="bonus"]').forEach((btn) => {
+      btn.disabled = !enabled;
+    });
+  }
+  function giveBonus(team) {
+    if (bonusGiven || !lastAnswerOpen()) return;
+    teams[team] += LAST_BONUS;
+    bonusGiven = true;
+    updateTeamScores();
+    updateBonusButtons();
   }
 
   function updatePot() {
@@ -123,6 +150,9 @@ const FamilyFeud = (function () {
 
     document.querySelectorAll('[data-add="pot"]').forEach((btn) => {
       btn.addEventListener("click", () => givePotTo(btn.dataset.team));
+    });
+    document.querySelectorAll('[data-add="bonus"]').forEach((btn) => {
+      btn.addEventListener("click", () => giveBonus(btn.dataset.team));
     });
   });
 
