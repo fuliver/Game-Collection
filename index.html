@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>게임 모음집</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- 상단 바 (뒤로가기 / 경로) -->
+    <div class="topbar" id="topbar" style="visibility:hidden">
+      <button class="btn ghost" id="backBtn">◂ 뒤로</button>
+      <div class="crumb" id="crumb"></div>
+      <div class="spacer"></div>
+      <button class="btn ghost" id="homeBtn">홈</button>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 화면 1: 허브 (게임 선택)                                       -->
+    <!-- ============================================================ -->
+    <section class="screen active" id="screen-hub">
+      <div class="hero">
+        <h1>🎉 <span class="accent">게임</span> 모음집</h1>
+        <p>함께 즐기는 파티 게임 — 무엇을 해볼까요?</p>
+      </div>
+      <div class="hub-grid">
+        <div class="game-card feud" id="goFeud">
+          <span class="emoji">👨‍👩‍👧‍👦</span>
+          <h2>Family Feud</h2>
+          <p>설문 조사 정답 맞히기! 두 팀이 점수로 대결하는 가족오락관 스타일.</p>
+        </div>
+        <div class="game-card quiz" id="goQuiz">
+          <span class="emoji">⚡</span>
+          <h2>스피드 퀴즈</h2>
+          <p>16개 카테고리, 각 15문제. 타이머 안에 최대한 많이 맞혀보세요!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 화면 2: 스피드 퀴즈 - 카테고리 선택                             -->
+    <!-- ============================================================ -->
+    <section class="screen" id="screen-quiz-cats">
+      <div class="hero">
+        <h1>⚡ 스피드 퀴즈</h1>
+        <p>카테고리를 선택하세요</p>
+      </div>
+      <div class="cat-grid" id="catGrid"><!-- JS로 채움 --></div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 화면 3: 스피드 퀴즈 - 플레이                                   -->
+    <!-- ============================================================ -->
+    <section class="screen" id="screen-quiz-play">
+      <div class="play-head">
+        <span class="pill" id="qProgress">1 / 15</span>
+        <span class="pill score" id="qScore">점수 0</span>
+        <span class="timer" id="qTimer">60</span>
+      </div>
+      <div class="qcard">
+        <div class="qnum" id="qNum">문제 1</div>
+        <div class="qtext" id="qText">문제 내용</div>
+        <div class="answer hidden" id="qAnswer">정답</div>
+      </div>
+      <div class="play-controls">
+        <button class="btn ghost big" id="qRevealBtn">정답 보기</button>
+        <button class="btn red big" id="qPassBtn">패스 ✕</button>
+        <button class="btn green big" id="qCorrectBtn">정답! ✓ (+1)</button>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 화면 4: 스피드 퀴즈 - 결과                                     -->
+    <!-- ============================================================ -->
+    <section class="screen" id="screen-quiz-result">
+      <div class="result-card">
+        <div class="qnum" id="rCat">카테고리</div>
+        <p style="color:var(--muted);margin:10px 0">최종 점수</p>
+        <div class="big-score"><span id="rScore">0</span> <span style="font-size:30px;color:var(--muted)">/ 15</span></div>
+        <p id="rComment" style="margin:14px 0 30px;font-size:20px"></p>
+        <div class="play-controls">
+          <button class="btn gold big" id="rAgainBtn">다시 도전</button>
+          <button class="btn ghost big" id="rCatsBtn">카테고리 선택</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 화면 5: Family Feud                                          -->
+    <!-- ============================================================ -->
+    <section class="screen" id="screen-feud">
+      <div class="feud-question" id="feudQuestion">질문</div>
+      <div class="feud-sub" id="feudRoundInfo">라운드 1</div>
+
+      <div class="feud-board" id="feudBoard"><!-- JS로 채움 --></div>
+
+      <div class="feud-controls">
+        <button class="btn red" id="feudStrikeBtn">스트라이크 ✕</button>
+        <button class="btn ghost" id="feudClearStrikeBtn">스트라이크 초기화</button>
+        <button class="btn gold" id="feudRevealAllBtn">전체 공개</button>
+        <button class="btn ghost" id="feudPrevBtn">◂ 이전 라운드</button>
+        <button class="btn ghost" id="feudNextBtn">다음 라운드 ▸</button>
+      </div>
+
+      <div class="feud-teams">
+        <div class="team a">
+          <input class="tname" id="teamAName" value="A팀" />
+          <div class="tscore" id="teamAScore">0</div>
+          <div class="team-btns">
+            <button class="btn green" data-team="a" data-add="pot">+ 라운드 점수</button>
+          </div>
+        </div>
+
+        <div class="feud-center">
+          <div class="pot">
+            <div class="pot-label">현재 라운드 합계</div>
+            <div class="pot-val" id="feudPot">0</div>
+          </div>
+          <div class="strikes" id="feudStrikes">
+            <div class="strike">✕</div><div class="strike">✕</div><div class="strike">✕</div>
+          </div>
+        </div>
+
+        <div class="team b">
+          <input class="tname" id="teamBName" value="B팀" />
+          <div class="tscore" id="teamBScore">0</div>
+          <div class="team-btns">
+            <button class="btn green" data-team="b" data-add="pot">+ 라운드 점수</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- 데이터 -->
+  <script src="data/speedquiz.js"></script>
+  <script src="data/familyfeud.js"></script>
+  <!-- 로직 -->
+  <script src="js/app.js"></script>
+  <script src="js/speedquiz.js"></script>
+  <script src="js/familyfeud.js"></script>
+</body>
+</html>
