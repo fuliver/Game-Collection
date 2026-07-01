@@ -38,44 +38,5 @@ const FAMILY_FEUD = {
         { text: "다시 잠들기", points: 1 },
       ],
     },
-    {
-      question: "친구를 부를 때 쓰는 별명/호칭은?",
-      answers: [
-        { text: "야!", points: 10 },
-        { text: "이름 줄임말", points: 9 },
-        { text: "친구야", points: 8 },
-        { text: "형/누나/언니/오빠", points: 7 },
-        { text: "별명", points: 6 },
-        { text: "닉네임", points: 5 },
-        { text: "짜식/임마", points: 4 },
-        { text: "자기야", points: 3 },
-        { text: "얘/쟤", points: 2 },
-        { text: "풀네임", points: 1 },
-      ],
-    },
-    {
-      question: "교회에서 가장 자주 듣는 단어는?",
-      answers: [
-        { text: "아멘", points: 10 },
-        { text: "할렐루야", points: 9 },
-        { text: "기도", points: 8 },
-        { text: "사랑", points: 7 },
-        { text: "은혜", points: 6 },
-        { text: "감사", points: 5 },
-        { text: "축복", points: 4 },
-        { text: "믿음", points: 3 },
-        { text: "천국", points: 2 },
-        { text: "평안", points: 1 },
-      ],
-    },
-    // 새 라운드 추가 예시 (답변 10개, 점수 10→1 권장):
-    // {
-    //   question: "여기에 질문",
-    //   answers: [
-    //     { text: "답변1", points: 10 },
-    //     { text: "답변2", points: 9 },
-    //     // ... 10개 (마지막 1점)
-    //   ],
-    // },
   ],
 };
