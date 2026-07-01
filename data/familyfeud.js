@@ -39,5 +39,37 @@ const FAMILY_FEUD = {
         { text: "워런 버핏 (버크셔 해서웨이)", points: 1 },
       ],
     },
+    {
+      question: "역대 한국영화 관객수 TOP10은?",
+      // 출처: 위키백과 '대한민국의 영화 흥행 기록'(한국영화, 2026.07 기준). 번호 = 순위.
+      answers: [
+        { text: "명량 (2014)", points: 10 },
+        { text: "왕과 사는 남자 (2026)", points: 9 },
+        { text: "극한직업 (2019)", points: 8 },
+        { text: "신과함께: 죄와 벌 (2017)", points: 7 },
+        { text: "국제시장 (2014)", points: 6 },
+        { text: "베테랑 (2015)", points: 5 },
+        { text: "서울의 봄 (2023)", points: 4 },
+        { text: "괴물 (2006)", points: 3 },
+        { text: "도둑들 (2012)", points: 2 },
+        { text: "7번방의 선물 (2013)", points: 1 },
+      ],
+    },
+    {
+      question: "세계에서 인구가 가장 많은 나라 TOP10은?",
+      // 출처: Worldometer 2026 인구 순위. 번호 = 순위.
+      answers: [
+        { text: "인도", points: 10 },
+        { text: "중국", points: 9 },
+        { text: "미국", points: 8 },
+        { text: "인도네시아", points: 7 },
+        { text: "파키스탄", points: 6 },
+        { text: "나이지리아", points: 5 },
+        { text: "브라질", points: 4 },
+        { text: "방글라데시", points: 3 },
+        { text: "러시아", points: 2 },
+        { text: "멕시코", points: 1 },
+      ],
+    },
   ],
 };
