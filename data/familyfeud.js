@@ -87,5 +87,53 @@ const FAMILY_FEUD = {
         { text: "예수님 (Jesus)", points: 1 },
       ],
     },
+    {
+      question: "올림픽 통산 금메달이 가장 많은 나라 TOP10은?",
+      // 하계 올림픽 통산 금메달 기준(구소련 등 defunct 포함). 4~10위 순서는 근사. 번호 = 순위.
+      answers: [
+        { text: "미국", points: 10 },
+        { text: "소련 (구소련)", points: 9 },
+        { text: "독일", points: 8 },
+        { text: "영국", points: 7 },
+        { text: "중국", points: 6 },
+        { text: "프랑스", points: 5 },
+        { text: "이탈리아", points: 4 },
+        { text: "헝가리", points: 3 },
+        { text: "스웨덴", points: 2 },
+        { text: "일본", points: 1 },
+      ],
+    },
+    {
+      question: "2025 멜론 연간차트(국내) TOP10은?",
+      // 출처: 멜론 2025 국내 연간차트. 곡 목록은 확실, 4~9위 순서는 근사. 번호 = 순위.
+      answers: [
+        { text: "Drowning - 우즈(WOODZ)", points: 10 },
+        { text: "HOME SWEET HOME - 지드래곤", points: 9 },
+        { text: "Whiplash - 에스파", points: 8 },
+        { text: "Die With A Smile - 레이디가가&브루노마스", points: 7 },
+        { text: "APT. - 로제&브루노마스", points: 6 },
+        { text: "like JENNIE - 제니", points: 5 },
+        { text: "오늘만 I LOVE YOU - 보이넥스트도어", points: 4 },
+        { text: "HAPPY - 데이식스", points: 3 },
+        { text: "IRIS OUT", points: 2 },
+        { text: "너에게 닿기를 - 10CM", points: 1 },
+      ],
+    },
+    {
+      question: "외국인이 좋아하는 한식 TOP10은?",
+      // 출처: 2024 해외 18개 도시 한식 소비자 조사(치킨~고기구이). 9~10위는 최근 조사 참고. 번호 = 순위.
+      answers: [
+        { text: "K-치킨", points: 10 },
+        { text: "라면", points: 9 },
+        { text: "김치", points: 8 },
+        { text: "비빔밥", points: 7 },
+        { text: "불고기", points: 6 },
+        { text: "김밥", points: 5 },
+        { text: "떡볶이", points: 4 },
+        { text: "고기구이(삼겹살 등)", points: 3 },
+        { text: "김치볶음밥", points: 2 },
+        { text: "잡채", points: 1 },
+      ],
+    },
   ],
 };
