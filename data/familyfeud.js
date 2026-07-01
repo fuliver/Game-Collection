@@ -72,17 +72,17 @@ const FAMILY_FEUD = {
       ],
     },
     {
-      question: "성경에 가장 많이 나오는 단어 TOP10은? (조사·접속사 제외)",
-      // 출처: 개역 성경 단어 빈도. 상위 3~4개는 확실, 이하 순서는 대략치. 번호 = 순위.
+      question: "개역개정 성경에 가장 많이 나오는 단어 TOP10은? (조사·접속사 제외)",
+      // 개역개정 기준. 여호와/하나님/이스라엘/예수 횟수는 확인된 값, 나머지 순서는 대략치. 번호 = 순위.
       answers: [
-        { text: "여호와 (약 7,000회)", points: 10 },
-        { text: "하나님 (약 4,000회)", points: 9 },
-        { text: "이스라엘 (약 2,500회)", points: 8 },
+        { text: "여호와 (7,020회)", points: 10 },
+        { text: "하나님 (4,068회)", points: 9 },
+        { text: "이스라엘 (2,468회)", points: 8 },
         { text: "왕", points: 7 },
         { text: "사람", points: 6 },
         { text: "백성", points: 5 },
-        { text: "아들", points: 4 },
-        { text: "예수 (약 1,300회)", points: 3 },
+        { text: "예수 (1,331회)", points: 4 },
+        { text: "아들", points: 3 },
         { text: "다윗", points: 2 },
         { text: "땅", points: 1 },
       ],
