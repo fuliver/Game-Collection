@@ -71,5 +71,55 @@ const FAMILY_FEUD = {
         { text: "멕시코", points: 1 },
       ],
     },
+    {
+      question: "인스타그램 팔로워가 가장 많은 인물 TOP10은?",
+      // 출처: 위키백과 '최다 팔로워 인스타그램 계정'(2026.06 기준, 개인만). 번호 = 순위.
+      answers: [
+        { text: "크리스티아누 호날두", points: 10 },
+        { text: "리오넬 메시", points: 9 },
+        { text: "셀레나 고메즈", points: 8 },
+        { text: "드웨인 존슨 (더 락)", points: 7 },
+        { text: "카일리 제너", points: 6 },
+        { text: "아리아나 그란데", points: 5 },
+        { text: "킴 카다시안", points: 4 },
+        { text: "비욘세", points: 3 },
+        { text: "클로이 카다시안", points: 2 },
+        { text: "저스틴 비버", points: 1 },
+      ],
+    },
+    {
+      question: "넷플릭스 역대 최고 인기 시리즈 TOP10은?",
+      // 출처: 넷플릭스 공식 조회수(91일) 기준. 상위권은 확실, 6~10위는 수시 변동 가능. 번호 = 순위.
+      answers: [
+        { text: "오징어 게임 시즌1", points: 10 },
+        { text: "웬즈데이 시즌1", points: 9 },
+        { text: "아뒬레센스", points: 8 },
+        { text: "기묘한 이야기 시즌4", points: 7 },
+        { text: "몬스터: 다머 이야기", points: 6 },
+        { text: "브리저튼 시즌3", points: 5 },
+        { text: "오징어 게임 시즌2", points: 4 },
+        { text: "브리저튼 시즌2", points: 3 },
+        { text: "종이의 집 파트5", points: 2 },
+        { text: "기묘한 이야기 시즌5", points: 1 },
+      ],
+    },
+    {
+      question: "예수님의 12제자를 모두 대보세요! (순위 없음)",
+      // 순위가 아니라 12명 전부 맞히는 라운드. 점수는 익숙한 순으로 임의 배정.
+      answers: [
+        { text: "베드로", points: 12 },
+        { text: "요한", points: 11 },
+        { text: "가룟 유다", points: 10 },
+        { text: "안드레", points: 9 },
+        { text: "야고보 (세베대의 아들)", points: 8 },
+        { text: "도마", points: 7 },
+        { text: "마태", points: 6 },
+        { text: "빌립", points: 5 },
+        { text: "바돌로매 (나다나엘)", points: 4 },
+        { text: "야고보 (알패오의 아들)", points: 3 },
+        { text: "다대오 (유다)", points: 2 },
+        { text: "시몬 (셀롯인)", points: 1 },
+      ],
+    },
   ],
 };
