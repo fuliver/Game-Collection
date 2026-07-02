@@ -7,18 +7,22 @@ const navStack = [];
 
 const Screens = {
   HUB: "screen-hub",
+  QUIZ_INTRO: "screen-quiz-intro",
   QUIZ_CATS: "screen-quiz-cats",
   QUIZ_PLAY: "screen-quiz-play",
   QUIZ_RESULT: "screen-quiz-result",
+  FEUD_INTRO: "screen-feud-intro",
   FEUD: "screen-feud",
 };
 
 // 각 화면의 빵부스러기(경로) 라벨
 const crumbLabels = {
   "screen-hub": "",
+  "screen-quiz-intro": "스피드 퀴즈 ▸ 소개",
   "screen-quiz-cats": "스피드 퀴즈",
   "screen-quiz-play": "스피드 퀴즈 ▸ 진행 중",
   "screen-quiz-result": "스피드 퀴즈 ▸ 결과",
+  "screen-feud-intro": "Family Feud ▸ 소개",
   "screen-feud": "Family Feud",
 };
 
@@ -54,11 +58,24 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("backBtn").addEventListener("click", goBack);
   document.getElementById("homeBtn").addEventListener("click", goHome);
 
-  // 허브에서 게임 선택
+  // 허브에서 게임 선택 → 먼저 소개 화면
   document.getElementById("goQuiz").addEventListener("click", () => {
-    SpeedQuiz.openCategories();
+    showScreen(Screens.QUIZ_INTRO);
   });
   document.getElementById("goFeud").addEventListener("click", () => {
+    showScreen(Screens.FEUD_INTRO);
+  });
+
+  // 소개 화면의 "시작하기"
+  document.getElementById("quizStartBtn").addEventListener("click", () => {
+    SpeedQuiz.openCategories();
+  });
+  document.getElementById("feudStartBtn").addEventListener("click", () => {
     FamilyFeud.open();
+  });
+
+  // 소개 화면의 "뒤로" 버튼들
+  document.querySelectorAll("[data-intro-back]").forEach((btn) => {
+    btn.addEventListener("click", goBack);
   });
 });

@@ -162,6 +162,44 @@ body::after {
 .game-card.quiz { background: linear-gradient(150deg, #6ae0ff, #7c4dff 60%, #5a2fd6); }
 
 /* ====================================================================== */
+/*  게임 소개 화면                                                          */
+/* ====================================================================== */
+.intro-card {
+  position: relative; max-width: 640px; margin: 10px auto 0;
+  background: var(--card); border: 4px solid rgba(255,255,255,0.85);
+  border-radius: 30px; padding: 40px 38px 34px; box-shadow: var(--shadow-lg);
+  text-align: center; overflow: hidden;
+}
+.intro-card::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 8px;
+  background: linear-gradient(90deg, var(--pink), var(--orange), var(--yellow), var(--green), var(--cyan), var(--purple));
+}
+.intro-emoji { font-size: 76px; animation: wobble 3s ease-in-out infinite; }
+.intro-card h2 { font-family: "Jua", sans-serif; font-size: 40px; margin: 6px 0 6px; color: var(--ink); }
+.intro-card.quiz h2 { color: var(--purple); }
+.intro-card.feud h2 { color: var(--pink); }
+.intro-tag { font-weight: 700; color: var(--ink-soft); font-size: 18px; margin-bottom: 20px; }
+.intro-tag b { color: var(--ink); }
+.intro-rules {
+  text-align: left; max-width: 500px; margin: 0 auto 26px; padding-left: 8px;
+  list-style: none; counter-reset: step;
+}
+.intro-rules li {
+  position: relative; padding: 12px 14px 12px 52px; margin-bottom: 10px;
+  background: rgba(255,255,255,0.6); border-radius: 16px; font-weight: 600; color: var(--ink);
+  line-height: 1.45; box-shadow: 0 4px 12px rgba(120,60,170,0.1);
+}
+.intro-rules li::before {
+  counter-increment: step; content: counter(step);
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  width: 30px; height: 30px; border-radius: 50%;
+  display: grid; place-items: center; font-family: "Jua", sans-serif; font-size: 16px; color: #fff;
+  background: linear-gradient(180deg, var(--purple), #5a2fd6);
+}
+.intro-card.feud .intro-rules li::before { background: linear-gradient(180deg, var(--pink), #c0308f); }
+.intro-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* ====================================================================== */
 /*  스피드 퀴즈                                                            */
 /* ====================================================================== */
 .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
