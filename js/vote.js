@@ -26,6 +26,20 @@
 
   const deviceId = Live.deviceId();
 
+  // 연결 상태 감시: databaseURL이 틀리면 계속 연결이 안 됨 → 안내 표시
+  let connected = false;
+  statusEl.textContent = "서버 연결 중…";
+  Live.ref(".info/connected").on("value", (snap) => {
+    connected = snap.val() === true;
+    if (connected && currentIndex < 0) statusEl.textContent = "질문 대기 중…";
+  });
+  setTimeout(() => {
+    if (!connected) {
+      qEl.textContent = "😥 서버에 연결하지 못했어요";
+      statusEl.textContent = "관리자: firebase-config 의 databaseURL 을 확인해 주세요";
+    }
+  }, 6000);
+
   // 참여 인원 등록
   Live.ref("rooms/" + room + "/members/" + deviceId).set(true);
 
