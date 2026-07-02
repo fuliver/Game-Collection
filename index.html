@@ -36,6 +36,11 @@
           <h2>스피드 퀴즈</h2>
           <p>16개 카테고리, 각 15문제. 타이머 안에 최대한 많이 맞혀보세요!</p>
         </div>
+        <div class="game-card balance" id="goBalance">
+          <span class="emoji">⚖️</span>
+          <h2>밸런스 게임</h2>
+          <p>둘 중 하나만 골라야 한다면? 손 들어 투표하고 비율을 확인해요!</p>
+        </div>
       </div>
     </section>
 
@@ -172,14 +177,70 @@
       </div>
     </section>
 
+    <!-- ============================================================ -->
+    <!-- 소개 화면: 밸런스 게임                                         -->
+    <!-- ============================================================ -->
+    <section class="screen" id="screen-balance-intro">
+      <div class="intro-card balance">
+        <div class="intro-emoji">⚖️</div>
+        <h2>밸런스 게임</h2>
+        <p class="intro-tag">둘 중 <b>딱 하나</b>만 고른다면?</p>
+        <ol class="intro-rules">
+          <li>화면에 <b>두 가지 선택지</b>가 나와요</li>
+          <li>각자 <b>마음에 드는 쪽</b>을 골라 손을 들어요</li>
+          <li>사회자가 <b>양쪽 칸을 눌러</b> 투표수를 세면, <b>비율 막대</b>가 채워져요</li>
+          <li>왜 골랐는지 <b>이야기</b>도 나눠보세요! (정답은 없어요 😆)</li>
+        </ol>
+        <div class="intro-btns">
+          <button class="btn ghost big" data-intro-back>◂ 뒤로</button>
+          <button class="btn gold big" id="balanceStartBtn">시작하기 ▸</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 화면: 밸런스 게임 - 플레이                                     -->
+    <!-- ============================================================ -->
+    <section class="screen" id="screen-balance">
+      <div class="play-head">
+        <span class="pill" id="balProgress">1 / 20</span>
+        <span class="pill" id="balVs">🔥 밸런스 게임</span>
+      </div>
+
+      <div class="balance-arena">
+        <div class="bal-side a" id="balSideA">
+          <div class="bal-votes" id="balVotesA">0</div>
+          <div class="bal-text" id="balTextA">선택지 A</div>
+          <div class="bal-tap">눌러서 +1 표</div>
+        </div>
+        <div class="bal-vs">VS</div>
+        <div class="bal-side b" id="balSideB">
+          <div class="bal-votes" id="balVotesB">0</div>
+          <div class="bal-text" id="balTextB">선택지 B</div>
+          <div class="bal-tap">눌러서 +1 표</div>
+        </div>
+      </div>
+
+      <div class="bal-bar"><div class="bal-bar-fill" id="balBarFill"></div></div>
+      <div class="bal-percent"><span id="balPctA">50%</span><span id="balPctB">50%</span></div>
+
+      <div class="play-controls">
+        <button class="btn ghost big" id="balPrevBtn">◂ 이전</button>
+        <button class="btn ghost big" id="balResetBtn">투표 초기화</button>
+        <button class="btn gold big" id="balNextBtn">다음 ▸</button>
+      </div>
+    </section>
+
   </div>
 
   <!-- 데이터 -->
   <script src="data/speedquiz.js"></script>
   <script src="data/familyfeud.js"></script>
+  <script src="data/balancegame.js"></script>
   <!-- 로직 -->
   <script src="js/app.js"></script>
   <script src="js/speedquiz.js"></script>
   <script src="js/familyfeud.js"></script>
+  <script src="js/balancegame.js"></script>
 </body>
 </html>

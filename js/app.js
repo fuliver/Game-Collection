@@ -13,6 +13,8 @@ const Screens = {
   QUIZ_RESULT: "screen-quiz-result",
   FEUD_INTRO: "screen-feud-intro",
   FEUD: "screen-feud",
+  BALANCE_INTRO: "screen-balance-intro",
+  BALANCE: "screen-balance",
 };
 
 // 각 화면의 빵부스러기(경로) 라벨
@@ -24,6 +26,8 @@ const crumbLabels = {
   "screen-quiz-result": "스피드 퀴즈 ▸ 결과",
   "screen-feud-intro": "Family Feud ▸ 소개",
   "screen-feud": "Family Feud",
+  "screen-balance-intro": "밸런스 게임 ▸ 소개",
+  "screen-balance": "밸런스 게임",
 };
 
 function showScreen(id, pushHistory = true) {
@@ -65,6 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("goFeud").addEventListener("click", () => {
     showScreen(Screens.FEUD_INTRO);
   });
+  document.getElementById("goBalance").addEventListener("click", () => {
+    showScreen(Screens.BALANCE_INTRO);
+  });
 
   // 소개 화면의 "시작하기"
   document.getElementById("quizStartBtn").addEventListener("click", () => {
@@ -72,6 +79,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   document.getElementById("feudStartBtn").addEventListener("click", () => {
     FamilyFeud.open();
+  });
+  document.getElementById("balanceStartBtn").addEventListener("click", () => {
+    BalanceGame.open();
   });
 
   // 소개 화면의 "뒤로" 버튼들
