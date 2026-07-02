@@ -9,6 +9,20 @@
 
 > 발표/큰 화면용으로 좋습니다. (F11 = 전체화면)
 
+## 🛠️ 기술 스택 (Tech Stack)
+
+| 구분 | 사용 기술 | 비고 |
+|------|-----------|------|
+| **프론트엔드** | 순수 HTML + CSS + JavaScript (Vanilla) | 프레임워크·빌드 도구 **없음**. 화면 전환은 자체 라우터([`js/app.js`](js/app.js)) |
+| **스타일** | 커스텀 CSS ([`css/style.css`](css/style.css)) | 파티 테마, 애니메이션. 웹폰트 **Google Fonts(Jua, Gaegu)** |
+| **QR 코드** | [qrcodejs](https://github.com/davidshimjs/qrcodejs) | CDN 로드, 클라이언트에서 QR 생성 |
+| **실시간 DB** | **Firebase Realtime Database** | 밸런스 게임의 **실시간 투표**에만 사용 (없어도 나머지 게임은 동작) |
+| **배포/호스팅** | **Vercel** | GitHub 연동 → `main` 브랜치에 **push 시 자동 배포** |
+| **소스 관리** | **Git + GitHub** | 저장소: `github.com/fuliver/Game-Collection` |
+
+- **빌드 과정이 없습니다.** 파일을 그대로 브라우저가 읽어 실행하는 정적 사이트(Static Site)입니다.
+- 서버(백엔드)도 없습니다. 유일한 서버측 요소는 실시간 투표용 **Firebase**(관리형 서비스)뿐입니다.
+
 ## 게임 구성
 첫 화면에서 게임을 고릅니다 (게임 선택 → 소개 → 시작).
 
@@ -54,41 +68,50 @@
 모든 문제는 `data/` 폴더의 파일만 고치면 됩니다. 코드는 건드릴 필요 없습니다.
 
 ### 스피드 퀴즈 — `data/speedquiz.js`
+설명하기(제시어) 방식. 카테고리마다 `{ points, words }`.
 ```js
-"음식1": [
-  { q: "둥근 빵 사이에 패티와 채소를 넣은 음식은?", a: "햄버거" },
-  { q: "여기에 문제", a: "여기에 정답" },
-  // ... 15개
-],
+"음식1": {
+  points: 10,                    // 정답당 점수 ('2' 카테고리는 20)
+  words: ["햄버거", "김밥", ...], // 단어 15개
+},
 ```
-- `placeholder("이름")` 으로 되어 있는 카테고리는 아직 예시 문제이니
-  위 형식처럼 직접 15개를 채워 넣으면 됩니다.
-- 이미 채워진 예시 카테고리: 교회 / 성경인물1 / 음식1 / 국가1 / 애니메이션 / 명대사
 
 ### Family Feud — `data/familyfeud.js`
+순위/설문 라운드. 점수는 1위 10점 → 10위 1점.
 ```js
 {
-  question: "‘여름’ 하면 떠오르는 것은?",
+  question: "질문 (예: 세계 인구 많은 나라 TOP10?)",
   answers: [
-    { text: "바다/해수욕장", points: 30 },
-    { text: "수박", points: 22 },
-    // 답변은 점수 높은 순으로
+    { text: "1위 답", points: 10 },
+    { text: "2위 답", points: 9 },
+    // ... 10개 (마지막 칸 정답 = ⭐+45 보너스)
   ],
 },
+```
+
+### 밸런스 게임 — `data/balancegame.js`
+```js
+{ a: "선택지 A", b: "선택지 B" },
 ```
 
 ## 폴더 구조
 ```
 JUST/
-├─ index.html          # 모든 화면(허브/퀴즈/피드)
-├─ css/style.css       # 디자인
+├─ index.html            # 메인 화면(허브/각 게임)
+├─ vote.html             # 참가자 휴대폰 투표 페이지(밸런스 실시간)
+├─ css/style.css         # 디자인
 ├─ js/
-│  ├─ app.js           # 화면 전환(라우팅)
-│  ├─ speedquiz.js     # 스피드 퀴즈 로직
-│  └─ familyfeud.js    # Family Feud 로직
+│  ├─ app.js             # 화면 전환(라우팅)
+│  ├─ speedquiz.js       # 스피드 퀴즈 로직
+│  ├─ familyfeud.js      # Family Feud 로직
+│  ├─ balancegame.js     # 밸런스 게임 로직(로컬+실시간)
+│  ├─ live.js            # Firebase 실시간 공용 헬퍼
+│  ├─ firebase-config.js # Firebase 설정값 (실시간 투표)
+│  └─ vote.js            # 참가자 투표 페이지 로직
 └─ data/
-   ├─ speedquiz.js     # ← 퀴즈 문제 (여기 수정)
-   └─ familyfeud.js    # ← Feud 문항 (여기 수정)
+   ├─ speedquiz.js       # ← 스피드 퀴즈 단어 (여기 수정)
+   ├─ familyfeud.js      # ← Feud 라운드 (여기 수정)
+   └─ balancegame.js     # ← 밸런스 문제 (여기 수정)
 ```
 
 ## 게임 더 추가하기
