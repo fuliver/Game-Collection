@@ -119,5 +119,21 @@ const FAMILY_FEUD = {
         { text: "잡채", points: 1 },
       ],
     },
+    {
+      question: "넷플릭스 한국 오리지널 드라마 인기작 TOP10은?",
+      // 출처: 넷플릭스 조회수 기준(오리지널 한국 시리즈). 1위는 확실, 이하 순서는 근사. 번호 = 순위.
+      answers: [
+        { text: "오징어 게임", points: 10 },
+        { text: "지금 우리 학교는", points: 9 },
+        { text: "더 글로리", points: 8 },
+        { text: "폭싹 속았수다", points: 7 },
+        { text: "스위트홈", points: 6 },
+        { text: "킹덤", points: 5 },
+        { text: "지옥", points: 4 },
+        { text: "트라우마 코드", points: 3 },
+        { text: "마스크걸", points: 2 },
+        { text: "정신병동에도 아침이 와요", points: 1 },
+      ],
+    },
   ],
 };
