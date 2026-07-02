@@ -204,7 +204,20 @@
     <section class="screen" id="screen-balance">
       <div class="play-head">
         <span class="pill" id="balProgress">1 / 20</span>
-        <span class="pill" id="balVs">🔥 밸런스 게임</span>
+        <span class="pill" id="balMode">🖐️ 화면 집계</span>
+        <button class="btn ghost" id="balLiveBtn" style="margin-left:auto">📱 실시간 투표 켜기</button>
+      </div>
+
+      <!-- 실시간 투표 패널 (Firebase 켜졌을 때) -->
+      <div class="bal-live-panel" id="balLivePanel" hidden>
+        <div class="bal-qr" id="balQr"></div>
+        <div class="bal-live-info">
+          <div class="bal-live-title">📱 휴대폰으로 QR을 스캔해서 참여!</div>
+          <div class="bal-room">방 코드 <b id="balRoomCode">----</b></div>
+          <div class="bal-live-url" id="balVoteUrl"></div>
+          <div class="bal-join">참여 <b id="balJoinCount">0</b>명 · 이번 질문 투표 <b id="balVoteCount">0</b></div>
+          <button class="btn ghost" id="balLiveOffBtn">실시간 끄기</button>
+        </div>
       </div>
 
       <div class="balance-arena">
@@ -233,6 +246,12 @@
 
   </div>
 
+  <!-- 실시간 투표용 (Firebase + QR) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/live.js"></script>
   <!-- 데이터 -->
   <script src="data/speedquiz.js"></script>
   <script src="data/familyfeud.js"></script>
