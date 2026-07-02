@@ -1,15 +1,14 @@
 /* =========================================================================
  *  familyfeud.js - Family Feud 로직
  *  - 답변 슬롯 클릭 → 공개 + 현재 라운드 합계(pot)에 점수 적립
- *  - 스트라이크 ✕ 3개
  *  - "+ 라운드 점수" 버튼으로 pot을 팀 점수로 전달
+ *  - 마지막 칸 정답을 맞힌 팀에게 +45 보너스
  * ========================================================================= */
 const FamilyFeud = (function () {
   const LAST_BONUS = 45; // 리스트의 마지막 답을 맞춘 팀에게 주는 보너스 점수
 
   let roundIndex = 0;
   let pot = 0;
-  let strikes = 0;
   let opened = []; // 각 답변 공개 여부
   let bonusGiven = false; // 이번 라운드에서 마지막정답 보너스를 이미 줬는지
   const teams = { a: 0, b: 0 };
@@ -28,7 +27,6 @@ const FamilyFeud = (function () {
     if (i < 0 || i >= rounds.length) return;
     roundIndex = i;
     pot = 0;
-    strikes = 0;
     bonusGiven = false;
     const round = rounds[i];
     opened = round.answers.map(() => false);
@@ -40,7 +38,6 @@ const FamilyFeud = (function () {
 
     renderBoard();
     updatePot();
-    renderStrikes();
     updateBonusButtons();
 
     document.getElementById("feudPrevBtn").disabled = i === 0;
@@ -114,20 +111,6 @@ const FamilyFeud = (function () {
     document.getElementById("feudPot").textContent = pot;
   }
 
-  // ---- 스트라이크 ----
-  function addStrike() {
-    if (strikes < 3) strikes++;
-    renderStrikes();
-  }
-  function clearStrikes() {
-    strikes = 0;
-    renderStrikes();
-  }
-  function renderStrikes() {
-    const els = document.querySelectorAll("#feudStrikes .strike");
-    els.forEach((el, i) => el.classList.toggle("on", i < strikes));
-  }
-
   // ---- 팀 점수 ----
   function givePotTo(team) {
     teams[team] += pot;
@@ -142,8 +125,6 @@ const FamilyFeud = (function () {
 
   // ---- 버튼 연결 ----
   document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("feudStrikeBtn").addEventListener("click", addStrike);
-    document.getElementById("feudClearStrikeBtn").addEventListener("click", clearStrikes);
     document.getElementById("feudRevealAllBtn").addEventListener("click", revealAll);
     document.getElementById("feudPrevBtn").addEventListener("click", () => loadRound(roundIndex - 1));
     document.getElementById("feudNextBtn").addEventListener("click", () => loadRound(roundIndex + 1));
