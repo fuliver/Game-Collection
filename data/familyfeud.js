@@ -148,6 +148,7 @@ const FAMILY_FEUD = {
         { text: "U+모바일tv (2.1%)", points: 4 },
         { text: "왓챠 (1.3%)", points: 3 },
         { text: "스포티비 나우 (0.9%)", points: 2 },
+        { text: "Apple TV+", points: 1 },
       ],
     },
   ],
