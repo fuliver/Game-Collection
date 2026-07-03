@@ -136,17 +136,18 @@ const FAMILY_FEUD = {
       ],
     },
     {
-      question: "대한민국 OTT 월간 이용자수(MAU) 순위는?",
-      // 출처: 2026년 5월 국내 OTT MAU 기준. 상위 5개 확정, 6~8위는 주요 OTT(대략). 번호 = 순위.
+      question: "대한민국 OTT 앱 이용자 점유율(MAU) 순위는?",
+      // 출처: 2026년 5월 국내 OTT 앱 MAU 점유율 (웹검색·확인 자료 일치). 번호 = 순위.
       answers: [
-        { text: "넷플릭스 (1,479만)", points: 10 },
-        { text: "쿠팡플레이 (910만)", points: 9 },
-        { text: "티빙 (770만)", points: 8 },
-        { text: "웨이브 (389만)", points: 7 },
-        { text: "디즈니플러스 (346만)", points: 6 },
-        { text: "왓챠", points: 5 },
-        { text: "애플TV+", points: 4 },
-        { text: "라프텔", points: 3 },
+        { text: "넷플릭스 (37.8%)", points: 10 },
+        { text: "쿠팡플레이 (24.4%)", points: 9 },
+        { text: "티빙 (17.8%)", points: 8 },
+        { text: "디즈니플러스 (6.7%)", points: 7 },
+        { text: "웨이브 (6.1%)", points: 6 },
+        { text: "라프텔 (2.9%)", points: 5 },
+        { text: "U+모바일tv (2.1%)", points: 4 },
+        { text: "왓챠 (1.3%)", points: 3 },
+        { text: "스포티비 나우 (0.9%)", points: 2 },
       ],
     },
   ],
