@@ -39,49 +39,48 @@ const SFX = (function () {
     });
   }
 
-  const T = 0.11;
+  const T = 0.12;
   return {
-    // 버튼 눌림 (짧은 틱)
-    click() { play([{ f: 620, dur: 0.05, type: "square", vol: 0.06 }]); },
-    // 정답 - 밝게 올라가는 3음
+    // 버튼 눌림 (아주 짧고 부드러운 틱)
+    click() { play([{ f: 480, dur: 0.035, type: "sine", vol: 0.05 }]); },
+    // 정답 - "딩~동" (초인종처럼 높은음 → 낮은음)
     correct() { play([
-      { f: 523, dur: 0.1, type: "triangle", vol: 0.18 },
-      { f: 659, start: 0.08, dur: 0.1, type: "triangle", vol: 0.18 },
-      { f: 784, start: 0.16, dur: 0.16, type: "triangle", vol: 0.2 },
+      { f: 988, dur: 0.2, type: "sine", vol: 0.28 },   // 딩
+      { f: 740, start: 0.17, dur: 0.4, type: "sine", vol: 0.28 }, // 동
     ]); },
-    // 오답/패스 - 내려가는 부저
+    // 오답 - "삐!!!" (길고 강한 부저)
     wrong() { play([
-      { f: 220, dur: 0.16, type: "sawtooth", vol: 0.16 },
-      { f: 160, start: 0.12, dur: 0.22, type: "sawtooth", vol: 0.16 },
+      { f: 300, dur: 0.5, type: "square", vol: 0.22 },
+      { f: 150, dur: 0.5, type: "sawtooth", vol: 0.12 },
     ]); },
-    // 정답판 공개 - 반짝 딩!
+    // 정답판 공개 - 위로 올라가듯 밝은 딩 (낮은음 → 높은음)
     reveal() { play([
-      { f: 880, dur: 0.1, type: "sine", vol: 0.2 },
-      { f: 1320, start: 0.05, dur: 0.2, type: "sine", vol: 0.18 },
+      { f: 660, dur: 0.09, type: "sine", vol: 0.22 },
+      { f: 990, start: 0.07, dur: 0.22, type: "sine", vol: 0.2 },
     ]); },
-    // 보너스 - 팡파레
+    // 보너스 - 밝은 팡파레
     bonus() { play([
-      { f: 523, dur: T, type: "triangle", vol: 0.2 },
-      { f: 659, start: T, dur: T, type: "triangle", vol: 0.2 },
-      { f: 784, start: T * 2, dur: T, type: "triangle", vol: 0.2 },
-      { f: 1046, start: T * 3, dur: 0.28, type: "triangle", vol: 0.22 },
+      { f: 659, dur: T, type: "triangle", vol: 0.22 },
+      { f: 880, start: T, dur: T, type: "triangle", vol: 0.22 },
+      { f: 1047, start: T * 2, dur: T, type: "triangle", vol: 0.22 },
+      { f: 1319, start: T * 3, dur: 0.3, type: "triangle", vol: 0.24 },
     ]); },
     // 점수 획득 - 코인
     coin() { play([
-      { f: 988, dur: 0.06, type: "square", vol: 0.16 },
-      { f: 1319, start: 0.05, dur: 0.14, type: "square", vol: 0.16 },
+      { f: 988, dur: 0.06, type: "square", vol: 0.15 },
+      { f: 1319, start: 0.05, dur: 0.14, type: "square", vol: 0.15 },
     ]); },
-    // 투표 탭 - 팝
-    pop() { play([{ f: 440, dur: 0.05, type: "triangle", vol: 0.16 }, { f: 660, start: 0.04, dur: 0.08, type: "triangle", vol: 0.14 }]); },
-    // 타이머 틱
-    tick() { play([{ f: 1000, dur: 0.04, type: "square", vol: 0.08 }]); },
+    // 투표 탭 - 부드러운 팝
+    pop() { play([{ f: 520, dur: 0.05, type: "sine", vol: 0.16 }, { f: 780, start: 0.04, dur: 0.08, type: "sine", vol: 0.13 }]); },
+    // 타이머 틱 (은은하게)
+    tick() { play([{ f: 900, dur: 0.035, type: "sine", vol: 0.07 }]); },
     // 라운드 종료 - 승리 팡파레
     win() { play([
       { f: 523, dur: T, type: "triangle", vol: 0.2 },
       { f: 659, start: T, dur: T, type: "triangle", vol: 0.2 },
       { f: 784, start: T * 2, dur: T, type: "triangle", vol: 0.2 },
-      { f: 1046, start: T * 3, dur: T, type: "triangle", vol: 0.22 },
-      { f: 1319, start: T * 4, dur: 0.34, type: "triangle", vol: 0.24 },
+      { f: 1047, start: T * 3, dur: T, type: "triangle", vol: 0.22 },
+      { f: 1319, start: T * 4, dur: 0.36, type: "triangle", vol: 0.24 },
     ]); },
 
     isOn() { return enabled; },

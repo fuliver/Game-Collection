@@ -44,6 +44,7 @@ const FamilyFeud = (function () {
     document.getElementById("feudNextBtn").disabled = i === rounds.length - 1;
   }
 
+  // 라운드 시작 시 보드 전체를 한 번만 그림 (이후엔 누른 칸만 갱신)
   function renderBoard() {
     const round = FAMILY_FEUD.rounds[roundIndex];
     const board = document.getElementById("feudBoard");
@@ -60,6 +61,15 @@ const FamilyFeud = (function () {
     });
   }
 
+  // 특정 칸 하나만 열림/닫힘 상태로 갱신 → 그 칸만 애니메이션됨
+  function setSlot(idx) {
+    const board = document.getElementById("feudBoard");
+    const slot = board.children[idx];
+    if (!slot) return;
+    slot.classList.remove("open", "closed");
+    slot.classList.add(opened[idx] ? "open" : "closed");
+  }
+
   function toggleAnswer(idx) {
     const ans = FAMILY_FEUD.rounds[roundIndex].answers[idx];
     if (!opened[idx]) {
@@ -71,7 +81,7 @@ const FamilyFeud = (function () {
       opened[idx] = false;
       pot -= ans.points;
     }
-    renderBoard();
+    setSlot(idx);
     updatePot();
     updateBonusButtons();
   }
@@ -82,9 +92,9 @@ const FamilyFeud = (function () {
       if (!opened[idx]) {
         opened[idx] = true;
         pot += ans.points;
+        setSlot(idx);
       }
     });
-    renderBoard();
     updatePot();
     updateBonusButtons();
   }
