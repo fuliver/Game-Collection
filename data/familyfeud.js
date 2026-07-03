@@ -135,5 +135,19 @@ const FAMILY_FEUD = {
         { text: "중증외상센터", points: 1 },
       ],
     },
+    {
+      question: "대한민국 OTT 월간 이용자수(MAU) 순위는?",
+      // 출처: 2026년 5월 국내 OTT MAU 기준. 상위 5개 확정, 6~8위는 주요 OTT(대략). 번호 = 순위.
+      answers: [
+        { text: "넷플릭스 (1,479만)", points: 10 },
+        { text: "쿠팡플레이 (910만)", points: 9 },
+        { text: "티빙 (770만)", points: 8 },
+        { text: "웨이브 (389만)", points: 7 },
+        { text: "디즈니플러스 (346만)", points: 6 },
+        { text: "왓챠", points: 5 },
+        { text: "애플TV+", points: 4 },
+        { text: "라프텔", points: 3 },
+      ],
+    },
   ],
 };
