@@ -65,6 +65,7 @@ const FamilyFeud = (function () {
     if (!opened[idx]) {
       opened[idx] = true;
       pot += ans.points;
+      if (typeof SFX !== "undefined") SFX.reveal();
     } else {
       // 잘못 눌렀을 때 되돌리기
       opened[idx] = false;
@@ -103,6 +104,7 @@ const FamilyFeud = (function () {
     if (bonusGiven || !lastAnswerOpen()) return;
     teams[team] += LAST_BONUS;
     bonusGiven = true;
+    if (typeof SFX !== "undefined") SFX.bonus();
     updateTeamScores();
     updateBonusButtons();
   }
@@ -113,6 +115,7 @@ const FamilyFeud = (function () {
 
   // ---- 팀 점수 ----
   function givePotTo(team) {
+    if (pot > 0 && typeof SFX !== "undefined") SFX.coin();
     teams[team] += pot;
     pot = 0;
     updatePot();

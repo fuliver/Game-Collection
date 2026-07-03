@@ -88,4 +88,20 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("[data-intro-back]").forEach((btn) => {
     btn.addEventListener("click", goBack);
   });
+
+  // ---- 효과음 ----
+  // 모든 버튼 클릭에 짧은 틱 (특정 사운드가 있는 동작은 위에서 별도로 재생)
+  document.addEventListener("click", (e) => {
+    if (e.target.closest(".btn")) SFX.click();
+  });
+  // 음소거 토글
+  const sfxBtn = document.getElementById("sfxToggle");
+  sfxBtn.textContent = SFX.isOn() ? "🔊" : "🔇";
+  sfxBtn.classList.toggle("off", !SFX.isOn());
+  sfxBtn.addEventListener("click", () => {
+    const on = SFX.toggle();
+    sfxBtn.textContent = on ? "🔊" : "🔇";
+    sfxBtn.classList.toggle("off", !on);
+    if (on) SFX.click();
+  });
 });

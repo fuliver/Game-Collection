@@ -325,12 +325,30 @@ body::after {
 .feud-slot.closed .num { background: rgba(255,255,255,0.28); color: #fff; font-size: 20px; }
 .feud-slot.open {
   background: linear-gradient(180deg, #4be79a, var(--green)); border-color: rgba(255,255,255,0.7);
-  animation: flip .45s cubic-bezier(.2,.9,.3,1.4);
+  animation: spinReveal .6s cubic-bezier(.2,.8,.25,1.15);
 }
 .feud-slot.open .label { color: #fff; }
 .feud-slot.open .pts { color: #fff; }
-.feud-slot.open .num { background: #fff; color: var(--green); }
-@keyframes flip { from { transform: rotateX(85deg) scale(.9); } to { transform: none; } }
+.feud-slot.open .num { background: #fff; color: var(--green); animation: numSpin .6s cubic-bezier(.2,.8,.25,1.4); }
+/* 정답판이 한 바퀴 스핀하며 열림 */
+@keyframes spinReveal {
+  0%   { transform: perspective(800px) rotateY(0deg) scale(1); }
+  55%  { transform: perspective(800px) rotateY(200deg) scale(1.09); box-shadow: 0 0 30px rgba(255,255,255,0.7), var(--shadow); }
+  100% { transform: perspective(800px) rotateY(360deg) scale(1); }
+}
+@keyframes numSpin { from { transform: rotate(-360deg) scale(.4); } to { transform: none; } }
+
+/* 효과음 음소거 토글 (우측 상단 고정) */
+.sfx-toggle {
+  position: fixed; top: 14px; right: 14px; z-index: 50;
+  width: 46px; height: 46px; border-radius: 50%; cursor: pointer;
+  border: 2px solid rgba(255,255,255,0.8); font-size: 22px; line-height: 1;
+  background: rgba(255,255,255,0.85); box-shadow: var(--shadow);
+  transition: transform .12s, filter .12s;
+}
+.sfx-toggle:hover { transform: scale(1.1); }
+.sfx-toggle:active { transform: scale(.92); }
+.sfx-toggle.off { filter: grayscale(1); opacity: .7; }
 
 .feud-teams { display: grid; grid-template-columns: 1fr auto 1fr; gap: 18px; align-items: stretch; }
 .team {

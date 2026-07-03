@@ -62,6 +62,7 @@ const BalanceGame = (function () {
   // ---- 로컬(화면) 투표 ----
   function vote(side) {
     if (live) return; // 실시간 모드에서는 폰으로만 투표
+    if (typeof SFX !== "undefined") SFX.pop();
     votes[index][side]++;
     render();
   }

@@ -70,6 +70,7 @@ const SpeedQuiz = (function () {
     const t = document.getElementById("qTimer");
     t.textContent = Math.max(0, state.timeLeft);
     t.classList.toggle("warn", state.timeLeft <= 10);
+    if (typeof SFX !== "undefined" && state.timeLeft <= 10 && state.timeLeft > 0) SFX.tick();
   }
 
   // ---- 단어 렌더링 ----
@@ -84,6 +85,7 @@ const SpeedQuiz = (function () {
 
   // 정답(+points) 또는 패스 후 다음 단어로
   function next(correct) {
+    if (typeof SFX !== "undefined") (correct ? SFX.correct() : SFX.wrong());
     if (correct) {
       state.correctCount++;
       state.score += state.points;
@@ -99,6 +101,7 @@ const SpeedQuiz = (function () {
   // ---- 종료 / 결과 ----
   function finish() {
     stopTimer();
+    if (typeof SFX !== "undefined") SFX.win();
     const total = state.words.length;
     const maxScore = total * state.points;
 

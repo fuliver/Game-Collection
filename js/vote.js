@@ -76,6 +76,7 @@
   }
 
   function applyChoice(choice, write) {
+    if (write && typeof SFX !== "undefined") SFX.pop();
     myChoice = choice;
     aEl.classList.toggle("chosen", choice === "a");
     bEl.classList.toggle("chosen", choice === "b");
